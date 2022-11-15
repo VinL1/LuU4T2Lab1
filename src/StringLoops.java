@@ -20,14 +20,16 @@ public class StringLoops
       */
     public int countCharacters(String character, String searchString) {
         /* to be implemented */
-        int counter = 0;
-        for (int i = 0; i < searchString.length(); i++) {
-            if ((searchString.substring(i)).indexOf(character) != -1 || (searchString.substring(i)).indexOf(character.toLowerCase()) != -1){
-                searchString = searchString.substring(searchString.indexOf(character));
-                counter ++;
+        String word = searchString.toLowerCase();
+        String chara = character.toLowerCase();
+        int count = 0;
+        for (int i = 0; i < searchString.length(); i ++){
+            String current = word.substring(i, i+1);
+            if(current.equals(chara)){
+                count++;
             }
         }
-        return counter;
+        return count;
     }
 
     /* Returns the original string reversed
@@ -38,10 +40,12 @@ public class StringLoops
     */
     public String reverseString(String origString) {
         /* to be implemented */
-        String newString = "";
-        for (int i = origString.length(); i >= 0; i--) {
-            newString = newString + origString.substring(i, i + 1);
+        int last = origString.length()-1;
+        String end = "";
+        for (int i = last; i !=-1; i--){
+            String letter = origString.substring(i, i+1);
+            end += letter;
         }
-        return newString;
+        return end;
     }
 }
